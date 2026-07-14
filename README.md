@@ -3,8 +3,29 @@
 [![CI](https://github.com/MrMarciaOng/kafkajs-snappy-patch/actions/workflows/ci.yml/badge.svg)](https://github.com/MrMarciaOng/kafkajs-snappy-patch/actions/workflows/ci.yml)
 
 A security-hardened Snappy compression codec for
-[KafkaJS](https://kafka.js.org/), forked from
-[`tulios/kafkajs-snappy`](https://github.com/tulios/kafkajs-snappy).
+[KafkaJS](https://kafka.js.org/).
+
+## About this fork
+
+This project is based on
+[`tulios/kafkajs-snappy`](https://github.com/tulios/kafkajs-snappy), originally
+created by [Túlio Ornelas](https://github.com/tulios). Credit and thanks go to
+Túlio and the original contributors for the KafkaJS Snappy codec on which this
+fork is built.
+
+The purpose of this fork is to preserve the codec's simple KafkaJS integration
+while strengthening its security and maintaining it for current runtimes. It
+aims to:
+
+- Limit decompressed output to reduce the risk of decompression bombs and
+  excessive memory allocation.
+- Reject malformed or truncated Snappy/Xerial payloads safely.
+- Keep compatibility with current Node.js and KafkaJS releases.
+- Minimize and pin dependencies, with automated vulnerability and supply-chain
+  checks in CI.
+
+The initial CVE remediation and security-hardening work for this fork was
+completed using Codex Goals in 9 minutes 27 seconds.
 
 ## Requirements
 
