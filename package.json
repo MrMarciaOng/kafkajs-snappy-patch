@@ -45,9 +45,9 @@
     "access": "public"
   },
   "dependencies": {
-    "snappyjs": "^0.7.0"
+    "snappyjs": "0.7.0"
   },
   "devDependencies": {
-    "kafkajs": "^2.2.4"
+    "kafkajs": "2.2.4"
   }
 }

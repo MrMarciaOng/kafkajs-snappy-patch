@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   incomplete data.
 - Removed the vulnerable Jest 23 dependency tree and replaced it with Node's
   built-in test runner.
+- Pinned all npm dependencies to exact versions backed by lockfile SHA-512
+  integrity values.
+- Added an OSV-Scanner CI gate with an exact release binary verified against its
+  published SHA-256 digest.
 
 ### Changed
 
@@ -25,12 +29,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Upgraded development compatibility coverage to KafkaJS 2.2.4.
 - Replaced the legacy Travis and Docker test setup with GitHub Actions on Node.js
   22 and 24.
+- Pinned GitHub Actions to immutable commit SHAs, the runner to Ubuntu 24.04,
+  and CI runtimes to exact Node.js patch releases.
 
 ### Added
 
 - Unit coverage for KafkaJS registration, raw and Xerial round trips,
   decompression bombs, aggregate limits, option validation, and malformed
   frames.
+- Policy coverage that rejects floating npm dependencies, missing lockfile
+  SHA-512 integrity, mutable GitHub Action tags, moving runner labels, and
+  major-only Node.js CI versions.
 
 ## [1.1.0] - 2018-11-12
 

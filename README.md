@@ -14,7 +14,7 @@ A security-hardened Snappy compression codec for
 ## Installation
 
 ```sh
-npm install kafkajs-snappy-patch
+npm install kafkajs-snappy-patch@2.0.0
 ```
 
 ## Configuration
@@ -43,7 +43,7 @@ Kafka clients accept.
 
 ## Security hardening
 
-- Uses `snappyjs@0.7`, which checks the declared uncompressed size before
+- Uses `snappyjs@0.7.0`, which checks the declared uncompressed size before
   allocating the output buffer.
 - Applies a configurable aggregate output limit to both raw Snappy streams and
   multi-chunk Xerial frames.
@@ -51,6 +51,11 @@ Kafka clients accept.
   parallel before the aggregate limit is enforced.
 - Rejects truncated Xerial headers, chunk sizes, and chunk payloads.
 - Uses one runtime dependency with no transitive dependencies.
+- Pins npm dependencies to exact versions with SHA-512 integrity in
+  `package-lock.json` and pins CI actions to immutable commit SHAs.
+- Runs an exact OSV-Scanner binary, verified against its published SHA-256, for
+  every push and pull request.
+- Tests the pinning policy so floating dependency ranges and action tags fail CI.
 
 See [SECURITY.md](SECURITY.md) to report a vulnerability.
 
@@ -60,6 +65,7 @@ See [SECURITY.md](SECURITY.md) to report a vulnerability.
 npm ci
 npm test
 npm audit --audit-level=low
+osv-scanner scan source --lockfile package-lock.json
 npm run test:package
 ```
 
